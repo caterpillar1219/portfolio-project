@@ -12,10 +12,11 @@ class Blog(models.Model):
     body = models.TextField()
     image = models.ImageField(upload_to='images/')
 
-# Add the Blog app to the settings
+    def __str__(self):
+        return self.title
 
-# Create a migration
+    def summary(self):
+        return self.body[:100]
 
-# Migration
-
-# Add the admin
+    def pub_date_pretty(self):
+        return self.pub_date.strftime('%b %e %Y')
